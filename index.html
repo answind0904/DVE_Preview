@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>이미지 확대 보기</title>
+  <style>
+    /* 새 창에서 열릴 페이지용 스타일 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black;
+    }
+    img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <!-- 썸네일이나 미리보기 이미지 -->
+  <img src="your_image_thumbnail.jpg" alt="클릭하여 확대" style="max-width: 300px; cursor: pointer;" onclick="openFullImage('your_image.jpg')">
+
+  <script>
+    function openFullImage(url) {
+      const win = window.open('', '_blank');
+      win.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>전체화면 이미지</title>
+          <style>
+            body, html {
+              margin: 0;
+              padding: 0;
+              height: 100%;
+              background-color: black;
+            }
+            img {
+              width: 100vw;
+              height: 100vh;
+              object-fit: contain;
+              display: block;
+              margin: auto;
+            }
+          </style>
+        </head>
+        <body>
+          <img src="${url}" alt="확대 이미지">
+        </body>
+        </html>
+      `);
+    }
+  </script>
+</body>
+</html>
